@@ -271,3 +271,6 @@ TSWLatexianTemp*
 
 # Makeindex log files
 *.lpz
+
+# ignore all files in Files
+Files/
