@@ -100,4 +100,21 @@ Doing a literature survey
   url    = {https://pvcstillingradschool.github.io/miniWiki/},
 }
 
+@InCollection{Gottlieb2016,
+  author    = {S. Gottlieb and D.I. Ketcheson},
+  booktitle = {Handbook of Numerical Analysis},
+  publisher = {Elsevier},
+  title     = {Time Discretization Techniques},
+  year      = {2016},
+  pages     = {549--583},
+  comment   = {求解双曲偏微分方程（HPDE），通常先进行空间离散得到常微分方程（ODE），再对ODE进行时间离散推进。时间推进方法包括多步法（R-K）、多级法、高阶导数法（Tayler级数）以及综合方法。时间步长约束需要满足绝对稳定性要求和附加的问题固有物理特性条件（如非负、总变差稳定等）。尤其是问题中产生激波时需要满足这些物理条件。本文对求解HPDE的时间推进经典方法进行了综述，并介绍了当前常用的前沿方法。
+
+对经典方法的计算特性进行了评估，多步法每步计算量小但所需存储量大，多级法每步计算量大但需存储量小，高阶导数缓和了存储量需求但计算量可能会更大。允许最大步长与三个因素有关：绝对稳定性（即线性稳定性，如CFL条件，对于光滑问题保证收敛）、鲁棒性（非线性稳定性，如密度压力为正和抑制振荡，对于激波和大梯度问题需保证物理、数学约束，通常在空间上使用限制器技术）、精度（不常用来限制步长）。
+
+对经典的R-K法、多步法、多级多步法、泰勒级数法、多级高阶导数法进行简介并对前沿方法进行了综述。谱延迟校正（SDC）方法是一种自适应阶数的R-K法。强保稳定性（SSP）方法通过对经典方法的SSP系数进行优化得到SSP时间推进方法，但它可能不是时间步长的限制因素。可选择其他性能指标（如绝对稳定性、低存储空间、数值色散和耗散）或与SSP同时对时间推进方法的系数进行数值优化。半显式半隐式（IMEX）方法在刚性项采用隐式积分，在非刚性项采用显式积分。指数时间差分（ETD）方法已广泛应用在DG法中。
+
+并行可增加},
+  doi       = {10.1016/bs.hna.2016.08.001},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
