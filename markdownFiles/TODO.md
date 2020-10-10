@@ -6,18 +6,15 @@
 - Python
 - MATLAB
 
+# Data Structures and Algorithms
 
-
-# Algorithms (Data Structures)
-
-- Algorithms Fourth Edition (book)
-- Algorithms (coursera)
-- Computational Geometry (Mesh generation)
+- Algorithms
+  - [Book (4th Edition)](https://algs4.cs.princeton.edu/)
+  - Coursera MOOCs ([part 1](https://www.coursera.org/learn/algorithms-part1) and [part 2](https://www.coursera.org/learn/algorithms-part2))
+- Computational Geometry (Mesh Generation)
 - Mesh Partition (Metis)
 
-
-
-# Tools
+# Tools for Development
 
 - Linux
 - Git & GitHub
@@ -25,13 +22,12 @@
 - GCC
 - GDB
 
+# Computer Systems
 
-
-# Computer Science
-
-CSAPP
-
-- Process
-- Thread
-- Network
-
+- CS:APP ([book](https://csapp.cs.cmu.edu/) and [course](https://www.cs.cmu.edu/afs/cs/academic/class/15213-f15/www/))
+  - Encoding
+  - Assembly
+  - Memory
+  - Process
+  - Thread
+  - Network
