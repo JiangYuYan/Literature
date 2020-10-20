@@ -50,10 +50,8 @@ git init
 
 ```
 git clone https://github.com/libgit2/libgit    # 创建libgit2仓库
-```
-
-```
 git clone https://github.com/libgit2/libgit2 mylibgit    # 创建mylibgit仓库
+git clone -o <remotename>    # 本地远程仓库名定义为非默认的origin
 ```
 
 #### 仓库状态
@@ -70,6 +68,7 @@ git add filename.xx    # 跟踪新文件 & 暂存已修改文件
 git rm                 # Git中移除文件，并在本地删除指定文件
 git rm --cached        # Git不继续追踪，本地保留
 git rm log/\*.log      # glob模式，删除log/目录下扩展名为.log的所有文件
+git mv <oldfilename> <newfilename>    # 重命名 
 git diff               # 当前与暂存
 git diff --staged(or cached) # 暂存与上次提交
 ```
@@ -124,6 +123,10 @@ git remote rename <remote> <newname>    # 重命名
 git remote remove <remote>    # 移除
 ```
 
+<remote>  origin
+
+<branch>  main
+
 #### 打标签
 
 ```
@@ -137,5 +140,113 @@ git push origin --tags    # 不在远程仓库中的标签都传送上去
 git tag -d v1.4    # 删除本地仓库上的标签
 git push <remote> :refs/tags/<tagname> # 将将冒号前面的空值推送到远程标签名，高效地删除它
 git push origin --delete <tagname>    # 删除远程标签
+```
+
+# 3 Git分支
+
+Git 的分支，其实本质上仅仅是指向提交对象的可变指针。
+
+ 在 Git 中，HEAD是一个指针，指向当前所在的本地分支
+
+在切换分支之前，保持好一个干净的状态。
+
+- 新建、切换、删除、查看
+
+```
+git branch testing    # 创建新分支
+git checkout testing    # 分支切换/检出，HEAD指向testing
+git checkout -b <newbranchname>    # 创建新分支并切换过去
+
+git log --oneline --decorate    # 查看分支状态
+git log --oneline --decorate --graph --all    # 查看分叉历史
+
+git branch -d hotfix    # 删除分支
+```
+
+- a simple example : 
+
+```
+git checkout -b iss53
+git commit -a -m “Messages.”
+git checkout -b hotfix
+git commit -a -m "Fix some errors."
+git checkout master    # 切回master
+git merge hotfix
+git branch -d hotfix
+git checkout iss53
+gti commit -a -m "Finish issue 53."
+git checkout master
+git merge iss53
+git branch -d iss53
+```
+
+- 遇到合并冲突时
+
+手动解决，修改文件
+
+图形化工具解决
+
+```
+git mergetool
+```
+
+- 分支管理
+
+```
+git branch                # 分支名列表
+git branch -v             # 最后一次提交信息
+git branch --merged        
+           --no-merged    
+           -d <merged>
+           -D <unmerged>
+```
+
+- 分支开发工作流
+
+  - 长期分支
+
+  - 主题分支
+
+- 远程分支
+
+```
+git ls-remote <remote>    # 显示远程引用的完整列表
+git remote show <remote>  # 远程分支信息
+git fetch <remote>        # 抓取本地没有的数据，移动 origin/main 指针到更新后的位置
+                          # origin/main 是远程引用，main 是本地分支
+git push origin serverfix # 推送
+=git push origin serverfix:serverfix
+git push origin serverfix:awesomebranch # 本地sever分支推送到远程awesome分支上
+
+git merge origin/serverefix    # 将远程分支合并到当前本地分支
+git checkout -b serberfix origin/serverfix    # 在远程分支基础上建立本地分支
+
+跟踪分支
+git checkout -b <branch> <remote>/<branch>
+git checkout --track <remote>/<branch>    # 快捷方式
+git checkout <branch>                     # 快捷方式2
+git checkout -b sf origin/serverfix       # 不同名字的本地分支
+git branch -u origin/severfix             # 已有的本地分支跟踪一个远程分支
+
+git fetch --all    # 抓取数据
+git branch -vv    # 查看设置的所有跟踪分支
+
+git fetch    # 从服务器上抓取本地没有的数据，不会修改工作目录中的内容
+git merge
+git pull     # = git fetch;  git merge
+
+删除
+git push origin --delete serverfix    # 从服务器上删除分支
+```
+
+- 变基
+
+```
+变基比三方合并多两行，提交历史更整洁，结果一样
+(git checkout experiment
+git rebase master)
+git checkout master
+git merge experiment
+git branch -d experiment
 ```
 
