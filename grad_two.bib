@@ -251,4 +251,59 @@ Lawson的边扫描法可用来改善网格质量，尤其适合去除sliver单�
   file   = {:郑建靖 2016《面向并行计算流体动力学模拟的非结构网格的若干问题研究》.pdf:PDF},
 }
 
+@Article{张晓媛2016,
+  author  = {张晓媛 and 张珩 and 翟健},
+  journal = {计算机系统应用},
+  title   = {基于邻域的大规模图数据动态分割算法},
+  year    = {2016},
+  file    = {:张晓媛 2016《基于邻域的大规模图数据动态分割算法》.pdf:PDF},
+}
+
+@Article{Karypis1998,
+  author    = {George Karypis and Vipin Kumar},
+  journal   = {Journal of Parallel and Distributed Computing},
+  title     = {Multilevelk-way Partitioning Scheme for Irregular Graphs},
+  year      = {1998},
+  month     = {jan},
+  number    = {1},
+  pages     = {96--129},
+  volume    = {48},
+  comment   = {​	METIS 系列多级划分算法是目前公认效率较高、效果较好的划分非结构图、有限元单元、超图的工具，由明尼苏达大学的 Karypis 教授团队开发。其下包含 METIS 串行图划分与矩阵分块包，ParMETIS 并行图分块与矩阵分块包和 hMETIS 超图分块包。METIS 包中的算法基于 Karypis 团队开发的的“多级递归二分法 (multilevel recursive-bisection)”、”多级 k 层法 (multilevel k-way)”和“多约束分块法（multi-constraint partitioning  schemes）”。METIS 分块包有以下特点：分块质量高，比谱分块方法的分块质量提高 10% 到 50%；分块速度快，比其他常用的分块算法快 1 到 2 个数量级；分块产生带宽缩减矩阵排序，对稀疏矩阵分解的存储和计算量的需求与“多重最小度（multiple minimum degree）”相比减少 1 个数量级，其生成的消去树适用于直接并行分解。ParMETIS为基于 MPI 的并行分块版本，其算法为 METIS 中对应的并行版本。hMETIS 用于对如超大规模集成电路的超图进行分块，其算法基于“多级超图分块法（multilevel hypergraph partitioning schemes）”，其优点为生成的分块质量非常高。参考[Graph Partitioning](http://glaros.dtc.umn.edu/gkhome/project/gp/overview)
+
+​	METIS 的多级 k 层分区算法主要包含三个阶段，图的粗化阶段、初始分区阶段和反粗化阶段。其中包含的主要算法有网格粗化算法 、多级二分算法和 Kernighan-Lin 算法。另外还有理论上较好的谱分区算法。
+
+​	网格粗化算法的主要思想为将图的节点逐步聚团，从而形成更少节点的大粒度图。其具体做法如下：对每个节点与边赋予权重；将节点组合为一个整体，形成一个大粒度节点；为保证粗化图的连通关系，大粒度节点的边为各子节点的边的并集；为保证粗化图与原图的一致性，各大粒度节点上的权重为各子节点权重之和，各合并边的权重为各边权重之和。为了确定哪些点需要聚团，定义了匹配度的概念，常用的匹配度有“随机匹配 (Random Matching)”、“权重边匹配 (Heavy Edge Matching)”、“修正权重边匹配 (Modified Heavy Edge Matching)”。
+
+​	Kernighan-Lin算法本质上时一种启发式的贪婪算法，其主要思想是以减小交界长度为目标，在二分的两个区间之间逐步交换顶点，直至达到局部最优。一种常用的 KL 算法的变体为 Fiduccia 和 Mattheyses 改进的 FM 算法，其主要思想为以减少交界长度为目的，变化地计算每个顶点的权重，在逐步交换顶点时只交换权重最大的顶点，从而降低复杂度。
+
+​	谱分块算法的步骤为：(1) 创建图 G 的拉普拉斯矩阵 $L(G) = C_{T}C$；(2) 计算第二小的特征值及其对应的特征向量；(3) 用特征向量中每个值的符号确定图的划分，正号为源点，负号为目标点。},
+  doi       = {10.1006/jpdc.1997.1404},
+  file      = {:Karypis 1998《Multilevelk Way Partitioning Scheme for Irregular Graphs》.pdf:PDF},
+  publisher = {Elsevier {BV}},
+}
+
+@InProceedings{McSherry2001,
+  author    = {F. McSherry},
+  booktitle = {Proceedings 42nd {IEEE} Symposium on Foundations of Computer Science},
+  title     = {Spectral partitioning of random graphs},
+  year      = {2001},
+  publisher = {{IEEE}},
+  doi       = {10.1109/sfcs.2001.959929},
+  file      = {:McSherry 2001《Spectral Partitioning of Random Graphs》.pdf:PDF},
+}
+
+@Article{Barnard1994,
+  author    = {Stephen T. Barnard and Horst D. Simon},
+  journal   = {Concurrency: Practice and Experience},
+  title     = {Fast multilevel implementation of recursive spectral bisection for partitioning unstructured problems},
+  year      = {1994},
+  month     = {apr},
+  number    = {2},
+  pages     = {101--117},
+  volume    = {6},
+  doi       = {10.1002/cpe.4330060203},
+  file      = {:Barnard 1994《Fast Multilevel Implementation of Recursive Spectral Bisection for Partitioning Unstructured Problems》.pdf:PDF},
+  publisher = {Wiley},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

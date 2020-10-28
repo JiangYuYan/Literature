@@ -32,3 +32,9 @@ Homework:
   - 面向并行 CFD 迭代计算的网格划分关键技术研究
   - 面向并行计算流体动力学模拟的非结构动网格生成的若干问题研究
 - Make a summary about 1000 words.
+
+
+
+2020/10/28
+
+- Make a review on METIS about 1000 words.
